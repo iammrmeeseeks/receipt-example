@@ -6,5 +6,5 @@ import (
 
 func main() {
 	receipt := generationReceipt("John Doe")
-	fmt.Println(receipt)
+	fmt.Println(receipt.format())
 }
