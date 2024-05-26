@@ -12,7 +12,7 @@ type Receipt struct {
 func generationReceipt(name string) Receipt {
 	receipt := Receipt{
 		name:  name,
-		items: map[string]float64{"item1": 1.99, "item2": 5.99},
+		items: map[string]float64{},
 		price: 0,
 	}
 	return receipt
