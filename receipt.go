@@ -23,11 +23,11 @@ func (receipt Receipt) format() string {
 	fs := "Receipt details \n"
 	var total float64 = 0
 	for k, v := range receipt.items {
-		fs += fmt.Sprintf("%v ...$ %v\n", k+":", v)
+		fs += fmt.Sprintf("%-25v ...$ %v\n", k+":", v)
 		total += v
 	}
-	fs += fmt.Sprintln("-------------------------")
+	fs += fmt.Sprintln("-------------------------------------")
 
-	fs += fmt.Sprintf("%v ...$ %0.2f", "total:", total)
+	fs += fmt.Sprintf("%-25v ...$ %0.2f", "total:", total)
 	return fs
 }
