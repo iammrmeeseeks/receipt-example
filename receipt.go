@@ -40,3 +40,8 @@ func (receipt Receipt) format() string {
 func (receipt *Receipt) updateTip(tip float64) {
 	receipt.tip = tip
 }
+
+// add an item to the receipt
+func (receipt *Receipt) addItem(item string, price float64) {
+	receipt.items[item] = price
+}
