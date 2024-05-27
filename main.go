@@ -1,14 +1,33 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
+	"os"
+	"strings"
 )
 
-func main() {
-	receipt := generationReceipt("John Doe")
+func creatingReceipt() Receipt {
+	reader := bufio.NewReader(os.Stdin)
 
-	receipt.addItem("Stationary", 5.09)
-	receipt.updateTip(0.50)
+	fmt.Println("Enter the consumer name: ")
+	name, _ := reader.ReadString('\n')
+	name = strings.TrimSpace(name)
+
+	receiptInprogress := generationReceipt(name)
+
+	fmt.Println("generating receipt for", receiptInprogress.name)
+	return receiptInprogress
+}
+
+func main() {
+
+	receipt := creatingReceipt()
 
 	fmt.Println(receipt.format())
+
+	// receipt := generationReceipt("John Doe")
+	// receipt.addItem("Stationary", 5.09)
+	// receipt.updateTip(0.50)
+	// fmt.Println(receipt.format())
 }
