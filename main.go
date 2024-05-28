@@ -7,6 +7,14 @@ import (
 	"strings"
 )
 
+func getUserInput(prompt string, r *bufio.Reader) (string, error) {
+	fmt.Println(prompt)
+
+	input, err := r.ReadString('\n')
+
+	return strings.TrimSpace(input), err
+}
+
 func creatingReceipt() Receipt {
 	reader := bufio.NewReader(os.Stdin)
 
