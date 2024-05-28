@@ -18,9 +18,11 @@ func getUserInput(prompt string, r *bufio.Reader) (string, error) {
 func creatingReceipt() Receipt {
 	reader := bufio.NewReader(os.Stdin)
 
-	fmt.Println("Enter the consumer name: ")
-	name, _ := reader.ReadString('\n')
-	name = strings.TrimSpace(name)
+	// fmt.Println("Enter the consumer name: ")
+	// name, _ := reader.ReadString('\n')
+	// name = strings.TrimSpace(name)
+
+	name, _ := getUserInput("Enter the consumer name: ", reader)
 
 	receiptInprogress := generationReceipt(name)
 
