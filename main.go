@@ -30,11 +30,23 @@ func creatingReceipt() Receipt {
 	return receiptInprogress
 }
 
+func propmtChoices(receipt Receipt) {
+	reader := bufio.NewReader(os.Stdin)
+
+	userChoice, _ := getUserInput("Select from bwlow, \n a to Add item \n t to add tip \n q/s to save receipt \n", reader)
+
+	userChoice = strings.TrimSpace(userChoice)
+
+	fmt.Println("user selected option ", userChoice)
+}
+
 func main() {
 
 	receipt := creatingReceipt()
 
-	fmt.Println(receipt.format())
+	propmtChoices(receipt)
+
+	// fmt.Println(receipt.format())
 
 	// receipt := generationReceipt("John Doe")
 	// receipt.addItem("Stationary", 5.09)
