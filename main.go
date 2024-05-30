@@ -35,9 +35,24 @@ func propmtChoices(receipt Receipt) {
 
 	userChoice, _ := getUserInput("Select from bwlow, \n a to Add item \n t to add tip \n q/s to save receipt \n", reader)
 
-	userChoice = strings.TrimSpace(userChoice)
+	switch userChoice {
+	case "a":
+		itemName, _ := getUserInput("Enter item name: ", reader)
+		itemPrice, _ := getUserInput("Enter item price: ", reader)
 
-	fmt.Println("user selected option ", userChoice)
+		fmt.Print(itemName, itemPrice)
+
+	case "t":
+		tip, _ := getUserInput("Enter tip amount: ", reader)
+		fmt.Print(tip)
+
+	case "q", "s":
+		fmt.Println("saving receipt")
+
+	default:
+		fmt.Println("Invalid choice")
+		propmtChoices(receipt)
+	}
 }
 
 func main() {
