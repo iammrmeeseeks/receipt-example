@@ -59,9 +59,11 @@ func propmtChoices(receipt Receipt) {
 			propmtChoices(receipt)
 		}
 		receipt.updateTip(t)
+		fmt.Println("tip added - ", tip)
+		propmtChoices(receipt)
 
 	case "q", "s":
-		fmt.Println("saving receipt")
+		fmt.Println("saving receipt\n", receipt.format())
 
 	default:
 		fmt.Println("Invalid choice")
