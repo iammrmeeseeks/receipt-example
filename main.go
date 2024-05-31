@@ -4,6 +4,7 @@ import (
 	"bufio"
 	"fmt"
 	"os"
+	"strconv"
 	"strings"
 )
 
@@ -40,11 +41,24 @@ func propmtChoices(receipt Receipt) {
 		itemName, _ := getUserInput("Enter item name: ", reader)
 		itemPrice, _ := getUserInput("Enter item price: ", reader)
 
-		fmt.Print(itemName, itemPrice)
+		p, err := strconv.ParseFloat(itemPrice, 64)
+		if err != nil {
+			fmt.Println("Invalid price")
+			propmtChoices(receipt)
+		}
+		receipt.addItem(itemName, p)
+		fmt.Println("Item added -", itemName, itemPrice)
+		propmtChoices(receipt)
 
 	case "t":
 		tip, _ := getUserInput("Enter tip amount: ", reader)
-		fmt.Print(tip)
+
+		t, err := strconv.ParseFloat(tip, 64)
+		if err != nil {
+			fmt.Println("Invalid tip amount")
+			propmtChoices(receipt)
+		}
+		receipt.updateTip(t)
 
 	case "q", "s":
 		fmt.Println("saving receipt")
