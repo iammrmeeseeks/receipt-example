@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"os"
 )
 
 type Receipt struct {
@@ -44,4 +45,14 @@ func (receipt *Receipt) updateTip(tip float64) {
 // add an item to the receipt
 func (receipt *Receipt) addItem(item string, price float64) {
 	receipt.items[item] = price
+}
+
+// save receipt
+func (receipt *Receipt) saveReceipt() {
+	data := []byte(receipt.format())
+	err := os.WriteFile("receipts/"+receipt.name+".txt", data, 0644)
+	if err != nil {
+		panic(err)
+	}
+	fmt.Print("Receipt saved, Thank you!\n")
 }
