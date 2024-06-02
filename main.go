@@ -63,6 +63,7 @@ func propmtChoices(receipt Receipt) {
 		propmtChoices(receipt)
 
 	case "q", "s":
+		receipt.saveReceipt()
 		fmt.Println("saving receipt\n", receipt.format())
 
 	default:
