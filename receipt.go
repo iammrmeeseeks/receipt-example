@@ -31,6 +31,7 @@ func (receipt Receipt) format() string {
 		fs += fmt.Sprintf("%-25v ...$ %v\n", k+":", v)
 		total += v
 	}
+
 	fs += fmt.Sprintln("-------------------------------------")
 
 	fs += fmt.Sprintf("%-25v ...$ %0.2f", "total:", total+receipt.tip)
